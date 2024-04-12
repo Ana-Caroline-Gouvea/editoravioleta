@@ -20,7 +20,7 @@ const Tab = createBottomTabNavigator();
 
 export default function App(navigation) {
 
-  const[ logado, setLogado ] = useState(false);
+  const[ logado, setLogado ] = useState(true);
   const[ cadastro, setCadastro ] = useState(false);
   
   if( logado == false ) {
@@ -87,17 +87,6 @@ export default function App(navigation) {
             tabBarLabel: 'Local',
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="map-search" color={color} size={size}/>
-            )
-        }}
-        />
-        <Tab.Screen 
-          name="FinalizarCompra"
-          component={FinalizarCompra}
-          options={{
-            headerShown: false,
-            tabBarLabel: 'Finalizar Compra',
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="book-open-page-variant-outline" color={color} size={size}/>
             )
         }}
         />
