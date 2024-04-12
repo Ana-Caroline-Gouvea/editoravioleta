@@ -8,16 +8,10 @@ export default function ProdutoLista({nome, preco, imagem, setCarrinho,},) {
                 <Image style={css.img} source={imagem} />
                     <Text style={css.bookName}>{nome}</Text>
                 <View style={css.boxCart}>
-<<<<<<< HEAD
-                    <Text style={css.preco}>{preco}</Text>
-                    <Image style={css.imgCart} source={ require ("../assets/carrinho.png")}/>
-                    {/* Navegar para o carrinho */}
-=======
                     <Text>{preco}</Text>
                     <TouchableOpacity  onPress={ () => setCarrinho( true )}>
                         <Image style={css.imgCart} source={ require ("../assets/carrinho.png")}/>
                     </TouchableOpacity>
->>>>>>> ddb30b6aee0475bb3112171adb499dab0f19e5cf
                 </View>
             </View>
     )
@@ -55,15 +49,8 @@ const css = StyleSheet.create({
         gap: 65,
     },
     imgCart: {
-<<<<<<< HEAD
-        width: 24,
-        height: 24,
-        marginTop: -10,
-        marginRight: 5,
-=======
         width: 25,
         height: 25,
->>>>>>> ddb30b6aee0475bb3112171adb499dab0f19e5cf
     },
     bookName: {
         width: 120,

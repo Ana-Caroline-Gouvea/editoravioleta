@@ -10,8 +10,6 @@ import IniciarCompra from "./IniciarCompra";
 import FinalizarCompra from "./FinalizarCompra";
 import Obrigada from "./Obrigada";
 
-const Baloo2 = fonts['Baloo2-Regular.ttf'];
-
 const produtosDestaque = [
     {
         id: 1,
