@@ -9,21 +9,18 @@ import { useState } from 'react';
 import Header from './components/Header';
 //import Local from './components/Local';
 import LocalProv from './src/LocalProv';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
-
-import Home from './src/Home';
 import Login from './src/Login';
 import Produto from "./src/Produto";
 import IniciarCompra from './src/IniciarCompra';
-import { useState } from 'react';
 import Cadastro from './src/Cadastro';
+import Devolucao from './src/Devolucao';
+import FinalizarCompra from './src/FinalizarCompra';
 
 
 const Tab = createBottomTabNavigator();
 
 
-export default function App() {
+export default function App(navigation) {
 
   const[logado, setLogado] = useState(false);
   const[cadastro, setCadastro] = useState(false);
@@ -38,7 +35,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Header/>
+      <Header navigation={navigation}/>
       <Tab.Navigator initialRouteName='Home'
         screenOptions={{
           headerShown: false,
@@ -79,6 +76,17 @@ export default function App() {
           options={{
             headerShown: false,
             tabBarLabel: 'Produtos Selecionadosos',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="book-open-page-variant-outline" color={color} size={size}/>
+            )
+        }}
+        />
+        <Tab.Screen 
+          name="FinalizarCompra"
+          component={FinalizarCompra}
+          options={{
+            headerShown: false,
+            tabBarLabel: 'Finalizar Compra',
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="book-open-page-variant-outline" color={color} size={size}/>
             )

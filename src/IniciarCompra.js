@@ -69,6 +69,7 @@ const css = StyleSheet.create({
         height: 672,
         backgroundColor: "#8E44AD",
         borderRadius: 5,
+        marginTop: -10,
     },
     boxTitle: {
         fontSize: 22,

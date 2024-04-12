@@ -6,7 +6,7 @@ export default function ProdutoLista({nome, preco, imagem}) {
                 <Image style={css.img} source={imagem} />
                     <Text style={css.bookName}>{nome}</Text>
                 <View style={css.boxCart}>
-                    <Text>{preco}</Text>
+                    <Text style={css.preco}>{preco}</Text>
                     <Image style={css.imgCart} source={ require ("../assets/carrinho.png")}/>
                     {/* Navegar para o carrinho */}
                 </View>
@@ -48,9 +48,14 @@ const css = StyleSheet.create({
     imgCart: {
         width: 24,
         height: 24,
+        marginTop: -10,
+        marginRight: 5,
     },
-      bookName: {
+    bookName: {
         width: 120,
         marginRight: 23,
-      }
+    },
+    preco: {
+        color: "#8E44AD",
+    }
 })

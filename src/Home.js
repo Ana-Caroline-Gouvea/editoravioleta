@@ -5,14 +5,16 @@ import { TextInput } from "react-native-paper";
 import { useState } from "react";
 import { useRef } from "react";
 import Carousel from 'react-native-snap-carousel';
+import fonts from '../assets/fonts/Baloo2-Regular.ttf'
 
+const Baloo2 = fonts['Baloo2-Regular.ttf'];
 
 const produtosDestaque = [
     {
         id: 1,
         nome: "Cem Chances",
         preco: "R$48,00",
-        imagem: require( "../assets/SafiraDourada.png")
+        imagem: require( "../assets/cem-chances.png")
     },
     {
         id: 2,
@@ -22,51 +24,51 @@ const produtosDestaque = [
     },
     {
         id: 3,
-        nome: "Pelo Quinto Andar",
-        preco: "R$59,00",
-        imagem: require( "../assets/SafiraDourada.png")
+        nome: "Locus",
+        preco: "R$70,00",
+        imagem: require( "../assets/locus.png")
     },
     {
         id: 4,
-        nome: "Incógnito",
+        nome: "Diário de Bordo",
         preco: "R$65,00",
-        imagem: require( "../assets/SafiraDourada.png")
+        imagem: require( "../assets/diario-de-bordo.png")
     },
     {
         id: 5,
-        nome: "Cem Chances",
+        nome: "Rock Mafia",
         preco: "R$48,00",
-        imagem: require( "../assets/SafiraDourada.png")
+        imagem: require( "../assets/rock-mafia.png")
     },
     {
         id: 6,
-        nome: "Safira Dourada",
+        nome: "Eros Vol.1",
         preco: "R$68,00",
-        imagem: require( "../assets/SafiraDourada.png")
+        imagem: require( "../assets/Eros.png")
     },
     {
         id: 7,
-        nome: "Pelo Quinto Andar",
+        nome: "Engavetados",
         preco: "R$59,00",
-        imagem: require( "../assets/SafiraDourada.png")
+        imagem: require( "../assets/engavetados.png")
     },
     {
         id: 8,
-        nome: "Incógnito",
-        preco: "R$65,00",
-        imagem: require( "../assets/SafiraDourada.png")
+        nome: "O Maestro",
+        preco: "R$75,00",
+        imagem: require( "../assets/o-maestro.png")
     },
     {
         id: 9,
-        nome: "Incógnito",
-        preco: "R$65,00",
-        imagem: require( "../assets/SafiraDourada.png")
+        nome: "O Khaos",
+        preco: "R$71,00",
+        imagem: require( "../assets/o-khaos.png")
     },
     {
         id: 10,
-        nome: "Incógnito",
+        nome: "Pelo Quinto Andar",
         preco: "R$65,00",
-        imagem: require( "../assets/SafiraDourada.png")
+        imagem: require( "../assets/pelo-quinto-andar.jpg")
     },
 ]
 
@@ -102,6 +104,7 @@ const banner = [
 ]
 
 export default function Home() {
+
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAutoScroll, setIsAutoScroll] = useState(true);

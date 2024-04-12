@@ -1,15 +1,23 @@
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Carrinho from "../src/Carrinho";
+import { useState } from "react";
+import { useNavigation } from '@react-navigation/native'; 
 
 export default function CustomHeader(){
+    
     return(
         <View style={css.Header}>
             <View style={css.logo}>
                 <Image source={ require("../assets/logovioleta.png")} style={css.img}/>
             </View>
             <View style={css.icone}>
-                <MaterialCommunityIcons name="account-circle" style={css.conta} />
-                <MaterialCommunityIcons name="cart-variant" style={css.conta} />
+                <TouchableOpacity>
+                    <MaterialCommunityIcons name="account-circle" style={css.conta} />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <MaterialCommunityIcons name="cart-variant" style={css.conta} />
+                </TouchableOpacity>
             </View>
         </View>
     )
