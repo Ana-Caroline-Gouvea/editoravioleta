@@ -1,7 +1,9 @@
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { NavigationContainer } from '@react-navigation/native';
 
-export default function CustomHeader(){
+export default function CustomHeader({ setCarrinho }){
+
     return(
         <View style={css.Header}>
             <View style={css.logo}>
@@ -9,7 +11,10 @@ export default function CustomHeader(){
             </View>
             <View style={css.icone}>
                 <MaterialCommunityIcons name="account-circle" style={css.conta} />
-                <MaterialCommunityIcons name="cart-variant" style={css.conta} />
+                <TouchableOpacity>
+                    <MaterialCommunityIcons  name="cart-variant" style={css.conta} />
+                </TouchableOpacity>
+                
             </View>
         </View>
     )

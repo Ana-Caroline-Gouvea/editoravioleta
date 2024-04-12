@@ -9,24 +9,19 @@ import { useState } from 'react';
 import Header from './components/Header';
 //import Local from './components/Local';
 import LocalProv from './src/LocalProv';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
-
-import Home from './src/Home';
 import Login from './src/Login';
 import Produto from "./src/Produto";
 import IniciarCompra from './src/IniciarCompra';
-import { useState } from 'react';
 import Cadastro from './src/Cadastro';
-
+import Devolucao from './src/Devolucao';
+import Carrinho from './src/Carrinho';
 
 const Tab = createBottomTabNavigator();
 
-
 export default function App() {
 
-  const[logado, setLogado] = useState(false);
-  const[cadastro, setCadastro] = useState(false);
+  const[ logado, setLogado ] = useState(false);
+  const[ cadastro, setCadastro ] = useState(false);
   
   if( logado == false ) {
     return( <Login setLogado={setLogado} setCadastro={setCadastro}/>)
@@ -38,7 +33,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Header/>
+      <Header />
       <Tab.Navigator initialRouteName='Home'
         screenOptions={{
           headerShown: false,
@@ -74,13 +69,24 @@ export default function App() {
         }}
         />
         <Tab.Screen 
-          name="Produtos Selecionados"
-          component={IniciarCompra}
+          name="Devolucao"
+          component={Devolucao}
           options={{
             headerShown: false,
-            tabBarLabel: 'Produtos Selecionadosos',
+            tabBarLabel: 'Devolução',
             tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="book-open-page-variant-outline" color={color} size={size}/>
+              <MaterialCommunityIcons name="arrow-u-up-right" color={color} size={size}/>
+            )
+        }}
+        />
+        <Tab.Screen 
+          name="LocalProv"
+          component={LocalProv}
+          options={{
+            headerShown: false,
+            tabBarLabel: 'Local',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="map-search" color={color} size={size}/>
             )
         }}
         />

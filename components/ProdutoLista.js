@@ -1,14 +1,17 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export default function ProdutoLista({nome, preco, imagem}) {
+
+export default function ProdutoLista({nome, preco, imagem, setCarrinho,},) {
     return( 
             <View style={css.container}>
                 <Image style={css.img} source={imagem} />
                     <Text style={css.bookName}>{nome}</Text>
                 <View style={css.boxCart}>
                     <Text>{preco}</Text>
-                    <Image style={css.imgCart} source={ require ("../assets/carrinho.png")}/>
-                    {/* Navegar para o carrinho */}
+                    <TouchableOpacity  onPress={ () => setCarrinho( true )}>
+                        <Image style={css.imgCart} source={ require ("../assets/carrinho.png")}/>
+                    </TouchableOpacity>
                 </View>
             </View>
     )
@@ -46,8 +49,8 @@ const css = StyleSheet.create({
         gap: 65,
     },
     imgCart: {
-        width: 24,
-        height: 24,
+        width: 25,
+        height: 25,
     },
       bookName: {
         width: 120,

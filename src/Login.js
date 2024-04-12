@@ -10,7 +10,7 @@ const[ senha, setSenha ]= useState("");
 function Login()
 {
     Keyboard.dismiss();
-    if( email == "Carol" && senha == "123") {
+    if( email == "Carol" && senha == "1234") {
         setLogado(true);
         alert('Bem-Vindo(a)!')
     }
@@ -20,7 +20,6 @@ function Login()
 function Cadastrar() {
     setLogado( true );
     setCadastro( true );
-    
 }
 
   return (

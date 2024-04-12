@@ -1,9 +1,6 @@
-import { View, FlatList, TouchableOpacity, Text, StyleSheet } from "react-native";
-
+import { View, FlatList, TouchableOpacity, Text, StyleSheet, Image } from "react-native";
 import CarrinhoItem from '../components/CarrinhoItem'
-import FinalizarCompra from "./FinalizarCompra";
 import { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
 
 
 const produtos =[
@@ -55,10 +52,15 @@ const produtos =[
     },
 ]
 
-export default function Carrinho({navigation, FinalizarCompra}){
+export default function Carrinho({ setCarrinho, setIniciarCompra }){
+
     return(
         <View>
             <View>
+                <TouchableOpacity style={css.buttonVoltar} onPress={ () => { setCarrinho( false ); setIniciarCompra( false ); } }>
+                    <Image style={css.imgVoltar} source={ require ("../assets/seta.png")}/>
+                </TouchableOpacity>
+
                 <FlatList
                 data={produtos}
                 renderItem={({item}) =>  
@@ -67,7 +69,7 @@ export default function Carrinho({navigation, FinalizarCompra}){
                         check={item.check}
                         imagem={item.imagem}
                         nome={item.nome}
-                        sinpose={item.sinopse}
+                        sinopse={item.sinopse}
                         preco={item.preco}
                     /> 
                 </View>)}
@@ -76,8 +78,8 @@ export default function Carrinho({navigation, FinalizarCompra}){
                 /> 
         </View>
         <View style={css.caixa}>
-            <TouchableOpacity style={css.botao} onPress={() => navigation.navigate('Finalizar Compra')  } > 
-            <Text style={css.texto}>Iniciar Compra</Text>
+            <TouchableOpacity  style={css.botao} onPress={() => { setIniciarCompra( true ); setCarrinho( false ) } }> 
+                <Text style={css.texto}>Iniciar Compra</Text>
             </TouchableOpacity>
         </View>
      </View>
@@ -99,8 +101,20 @@ const css = StyleSheet.create ({
         fontWeight: "bold",
     },
     caixa:{
-        marginBottom: -150,
+        marginBottom: -240,
         borderTopColor: "black",
         borderTopWidth: 1,
+    },
+    buttonVoltar: {
+        width: 80,
+        height: 20,
+        margin: 15,
+        flexDirection: "row",
+        gap: 10
+
+    },
+    imgVoltar: {
+        width: 26,
+        height: 26,  
     }
 })

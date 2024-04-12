@@ -1,9 +1,12 @@
 import { StyleSheet, View, Text, Image, TouchableOpacity, } from "react-native"
 
-export default function IniciarCompra(){
+export default function IniciarCompra({ setIniciarCompra, setCarrinho, setFinalizarCompra }){
       
     return(
         <View style={css.boxFather}>
+            <TouchableOpacity style={css.buttonVoltar} onPress={ () => { setIniciarCompra( false ); setCarrinho( true ); }}>
+                    <Image style={css.imgVoltar} source={ require ("../assets/seta.png")}/>
+                </TouchableOpacity>
             <View style={css.box}>
                 <Text style={css.boxTitle}>Produtos selecionados</Text>
                 <View style={css.boxImg}>
@@ -51,7 +54,7 @@ export default function IniciarCompra(){
                         <Text style={css.preco}>R$30,00</Text>
                     </View>
                 </View>
-                <TouchableOpacity style={css.buttonComprar}>
+                <TouchableOpacity style={css.buttonComprar} onPress={() => { setIniciarCompra( false ); setCarrinho( false ); setFinalizarCompra( true)  } }>
                     <Text style={css.textComprar}>Finalizar Compra</Text>
                 </TouchableOpacity>
             </View>
@@ -66,13 +69,15 @@ const css = StyleSheet.create({
     },
     box: {
         width: 370,
-        height: 672,
+        height: 622,
         backgroundColor: "#8E44AD",
-        borderRadius: 5,
+        borderRadius: 7,
     },
     boxTitle: {
         fontSize: 22,
-        padding: 16,
+        paddingLeft: 22,
+        paddingRight: 16,
+        padding: 8,
         color: "white",
     },
     boxImg: {
@@ -96,10 +101,13 @@ const css = StyleSheet.create({
     },
     boxInfo: {
         width: 332,
-        height:115,
+        height:105,
         backgroundColor: "#F9F5EE",
         borderRadius: 4,
-        margin: 17,
+        marginLeft: 17,
+        marginRight: 17,
+        marginTop:5,
+        marginBottom: 10,
     },
     info: {
         textAlign: "justify",
@@ -138,7 +146,10 @@ const css = StyleSheet.create({
         marginBottom: 8,
     },
     boxFrete: {
-        margin: 16,
+        marginLeft: 16,
+        marginRight: 16,
+        marginTop: 12,
+
         gap: 2,
     },
     freteFixo: {
@@ -209,10 +220,22 @@ const css = StyleSheet.create({
         backgroundColor: '#F1CEFF',
         borderRadius: 3,
         marginLeft: 15,
+        marginTop: 10,
     },
     textComprar: {
         fontWeight: 'bold',
         fontSize: 17,
         color: '#8E44AD',
-    }
+    },
+    buttonVoltar: {
+        width: 80,
+        height: 22,
+        marginTop: -8,
+        marginBottom: 12,
+        marginLeft: -290
+    },
+    imgVoltar: {
+        width: 26,
+        height: 26,  
+    },
 })
