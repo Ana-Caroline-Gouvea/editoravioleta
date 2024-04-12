@@ -1,11 +1,16 @@
+import { useState } from "react";
 import { StyleSheet, View, Text, TextInput, Image, TouchableOpacity } from "react-native"
 
-export default function FinalizarCompra(){
+export default function FinalizarCompra({ setIniciarCompra, setCarrinho, setFinalizarCompra, setObrigado}){
     return(
+
         <View style={css.avo}>
+            <TouchableOpacity style={css.buttonVoltar} onPress={ () => { setIniciarCompra( true ); setCarrinho( false ); setFinalizarCompra( false ) }}>
+                    <Image style={css.imgVoltar} source={ require ("../assets/seta.png")}/>
+                </TouchableOpacity>
             <View style={css.pai}>
                 <View>
-                    <Text style={css.texto}>Dados de contato ___________</Text>
+                    <Text style={css.textoDadoContato}>Dados de contato ____________</Text>
                     <TextInput placeholder="E-mail" style={css.email} placeholderTextColor={"#9D81BB"} />
                 </View>
                 <View style={css.filho}>
@@ -26,7 +31,7 @@ export default function FinalizarCompra(){
                     </View>
                 </View>
             </View>
-            <Text style={css.texto}>Dados para entrega _________________________________________</Text>
+            <Text style={css.textoDadoEntrega}>Dados para entrega _______________________________________</Text>
             <TextInput placeholder="Nome" style={css.nome} placeholderTextColor={"#9D81BB"}/>
             <TextInput placeholder="Sobrenome" style={css.nome} placeholderTextColor={"#9D81BB"}/>
             <View style={css.mae}>
@@ -58,7 +63,7 @@ export default function FinalizarCompra(){
                 <Image style={css.mercado} source={ require( "../assets/mercado.png" )}/>
                 <Text style={css.textoquaq}>Até 2 parcelas sem juros </Text>
             </View>
-            <TouchableOpacity style={css.botao} >
+            <TouchableOpacity style={css.botao} onPress={ () => { setIniciarCompra( false ); setCarrinho( false ); setFinalizarCompra( false ); setObrigado( true )}}>
                 <Text style={css.textobotao}>Finalizar Pedido</Text>
             </TouchableOpacity>
         </View>
@@ -73,7 +78,7 @@ const css = StyleSheet.create({
     },
     filho:{
         backgroundColor: "#A15BBF",
-        width: 150,
+        width: 155,
         height: 75, 
         marginLeft: 33,
         justifyContent: "center",
@@ -81,10 +86,16 @@ const css = StyleSheet.create({
     avo:{
         alignItems: "center"
     },
-    texto:{
+    textoDadoContato:{
         fontSize: 14,
         color: "#8E44AD",
         fontWeight: "bold",
+    },
+    textoDadoEntrega: {
+        fontSize: 14,
+        color: "#8E44AD",
+        fontWeight: "bold",
+        marginLeft: 9,
     },
     email:{
         borderColor: "#DDCCEF",
@@ -99,12 +110,12 @@ const css = StyleSheet.create({
         borderWidth: 1,
         marginTop: 5,
         paddingLeft: 5,
-        width: "90%",
+        width: "92%",
         paddingRight: 5,
         height: 35,
     },
     mae:{
-        width: "90%",
+        width: "92%",
         height: 70,
         borderColor: "#DDCCEF",
         borderWidth: 1,
@@ -132,8 +143,7 @@ const css = StyleSheet.create({
         borderColor: "#DDCCEF",
         borderWidth: 1,
         paddingLeft: 5,
-        marginLeft: 76,
-        marginTop: 10,
+        marginLeft: 79,
     },
     numero:{
         width: "30%",
@@ -142,7 +152,7 @@ const css = StyleSheet.create({
         borderWidth: 1,
         paddingLeft: 5,
         marginLeft: -5.5,
-        marginTop: 10,
+
     },
     titulo:{
         fontSize: 14,
@@ -163,7 +173,7 @@ const css = StyleSheet.create({
         paddingLeft: 5,
         paddingRight: 5,
         height: 35,
-        width: "90%",
+        width: "92%",
         display: "flex",
         flexDirection: "row",
     },
@@ -208,8 +218,8 @@ const css = StyleSheet.create({
     },
     botao:{
         backgroundColor: "#A368BC",
-        marginTop: 30,
-        marginLeft: 175,
+        marginTop: 9,
+        marginLeft: 193,
         width: "45%",
         height: 50,
         alignItems: "center",
@@ -252,5 +262,16 @@ const css = StyleSheet.create({
         fontSize: 11,
         marginTop: 3,
         marginLeft: 50,
-    }
+    },
+    buttonVoltar: {
+        width: 80,
+        height: 22,
+        marginTop: 5,
+        marginBottom: -14,
+        marginLeft: -290
+    },
+    imgVoltar: {
+        width: 26,
+        height: 26,  
+    },
 })

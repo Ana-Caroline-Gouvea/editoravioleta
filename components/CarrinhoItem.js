@@ -1,6 +1,6 @@
 import { Image, StyleSheet, View, Text, TextInput} from "react-native";
 
-export default function CarrinhoItem({imagem, nome, sinpose, preco, check}){
+export default function CarrinhoItem({imagem, nome, sinopse, preco, check}){
     return(
         <View style={css.pai}>
             <View>
@@ -11,7 +11,7 @@ export default function CarrinhoItem({imagem, nome, sinpose, preco, check}){
                 <Text style={css.text}>{nome}</Text>
                 <View style={css.irmao}>
                     <Text style={css.sinopse}>Sinopse</Text>
-                    <Text style={css.textosinop}>{sinpose}</Text>
+                    <Text style={css.textosinop}>{sinopse}</Text>
                 </View>
                 <View style={css.mae}>
                     <TextInput style={css.input}

@@ -1,15 +1,14 @@
-import { Image, StyleSheet, View, Text, Button, TouchableOpacity } from "react-native";
-import Home from "./Home";
+import { Image, StyleSheet, View, Text, Button, TouchableOpacity, } from "react-native";
+import LocalProv from "./LocalProv";
 
-export default function Obrigada(){
+export default function Obrigada({ setCarrinho, setIniciarCompra, setFinalizarCompra, setObrigado, navigation }){
     return(
         <View style={css.caixa}>
             <Image source={ require( "../assets/logo.png")} style={css.imagem}></Image>
             <Text style={css.text}>Obrigado(a) pela preferência!</Text>
-            <TouchableOpacity
-            style={css.button}
-            onPress={Home}>
-            <Text style={css.continue}>Ir para a pagina de rastreamento</Text></TouchableOpacity>
+            <TouchableOpacity style={css.button} onPress={ () => { setIniciarCompra( false ); setCarrinho( false ); setFinalizarCompra( false ); setObrigado( false ); navigation.navigate(LocalProv)}}>
+                <Text style={css.continue}>Ir para a página de rastreamento</Text>
+            </TouchableOpacity>
         </View>
     )
 }

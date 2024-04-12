@@ -1,5 +1,10 @@
 import { Image, StyleSheet, Text, View, FlatList, } from "react-native";
 import ProdutoLista from "../components/ProdutoLista";
+import { useState } from "react";
+import Carrinho from "./Carrinho";
+import IniciarCompra from "./IniciarCompra";
+import FinalizarCompra from "./FinalizarCompra";
+import Obrigada from "./Obrigada";
 
 
 
@@ -54,10 +59,12 @@ const produtos = [
     },
 ]
 
-export default function Produto({nome, preco, imagem}) {
+export default function Produto({ navigation }) {
+
+
     return(
         <View>
-            <Text style={css.title}>Lista de Produtos ___________________</Text>
+            <Text style={css.title}>Lista de Produtos ________________________</Text>
             <FlatList style={css.container} 
                 contentContainerStyle={{ height: 1350 }}
                 data={produtos}

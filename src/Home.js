@@ -4,8 +4,11 @@ import BannerLista from "./BannerLista";
 import { TextInput } from "react-native-paper";
 import { useState } from "react";
 import { useRef } from "react";
-import Carousel from 'react-native-snap-carousel';
-import fonts from '../assets/fonts/Baloo2-Regular.ttf'
+import Carousela from 'react-native-snap-carousel';
+import Carrinho from "./Carrinho";
+import IniciarCompra from "./IniciarCompra";
+import FinalizarCompra from "./FinalizarCompra";
+import Obrigada from "./Obrigada";
 
 const Baloo2 = fonts['Baloo2-Regular.ttf'];
 
@@ -103,17 +106,37 @@ const banner = [
     },
 ]
 
-export default function Home() {
-
-
+export default function Home({ navigation }) {
+    
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAutoScroll, setIsAutoScroll] = useState(true);
     const carouselRef = useRef(null);
+    const [ carrinho, setCarrinho ] = useState(false);
+    const [ iniciarCompra, setIniciarCompra ] = useState(false);
+    const [ finalizarCompra, setFinalizarCompra ] = useState(false);
+    const[ obrigado, setObrigado] =useState(false);
+
+    if( carrinho ) {
+        return ( <Carrinho setCarrinho={setCarrinho} setIniciarCompra={setIniciarCompra}  setFinalizarCompra={setFinalizarCompra} setObrigado={setObrigado}/> )
+    }
+
+    if( iniciarCompra ){
+        return( <IniciarCompra setCarrinho={setCarrinho} setIniciarCompra={setIniciarCompra}  setFinalizarCompra={setFinalizarCompra} setObrigado={setObrigado}/> )
+    }
+
+    if( finalizarCompra ){
+        return( <FinalizarCompra setCarrinho={setCarrinho} setIniciarCompra={setIniciarCompra} setFinalizarCompra={setFinalizarCompra} setObrigado={setObrigado}/> )
+    }
+
+    if( obrigado ){
+        return( <Obrigada setCarrinho={setCarrinho} setIniciarCompra={setIniciarCompra} setFinalizarCompra={setFinalizarCompra} setObrigado={setObrigado} navigation={navigation}/> )
+    }
+
 
     return(
         <View>
             <View>
-                <Carousel
+                <Carousela
                     data={banner}
                     renderItem={({ item }) => (
                         <BannerLista
@@ -131,7 +154,8 @@ export default function Home() {
                     contentContainerStyle={{ height: 2100 }}
                     data={produtosDestaque}
                     renderItem={({item}) => 
-                    <ProdutoLista 
+                    <ProdutoLista
+                        setCarrinho={setCarrinho} 
                         nome={item.nome}
                         preco={item.preco}
                         imagem={item.imagem}
